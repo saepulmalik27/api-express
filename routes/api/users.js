@@ -3,6 +3,9 @@ const router = express.Router();
 const User = require("../../models/User");
 const gravatar = require("gravatar");
 const bycrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/key.js");
+const passport = require("../../")
 
 router.post("/register", (req, res) => {
   User.findOne({ email: req.body.email }).then((user) => {
@@ -49,7 +52,28 @@ router.post("/login", (req, res) => {
 
     bycrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
-        res.json({ msg: "Success" });
+        // res.json({ msg: "Success" });
+
+        // User Matched
+        const payload = { id: user.id, name: user.name, avatar: user.avatar };
+
+        // sign token
+        console.log(keys.secretOrkey);
+        jwt.sign(
+            payload, 
+            keys.secretOrkey, 
+            { expiresIn: 3600 }, 
+            (err, token) => {
+                if (token) {
+                    res.json({
+                        success : true,
+                        token : 'Bearer ' + token
+                    })    
+                }else{
+                    res.status(400).json({error : 'token undefined'});
+                }
+                
+            });
       } else {
         return res.status(400).json({ password: "password incorrect" });
       }
