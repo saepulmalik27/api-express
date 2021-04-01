@@ -7,6 +7,8 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/key.js");
 const passport = require("passport");
 const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
+
 
 router.post("/register", (req, res) => {
   const {errors, isValid} = validateRegisterInput(req.body);
@@ -51,11 +53,19 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
+  // res.json(req.body);
+  const {errors, isValid} = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const { email, password } = req.body;
 
   User.findOne({ email: email }).then((user) => {
     if (!user) {
-      return res.status(404).json({ email: "User not found" });
+      errors.email ="User not found"
+      return res.status(404).json(errors);
     }
 
     bycrypt.compare(password, user.password).then((isMatch) => {
@@ -78,12 +88,14 @@ router.post("/login", (req, res) => {
                 token: "Bearer " + token,
               });
             } else {
+              
               res.status(400).json({ error: "token undefined" });
             }
           }
         );
       } else {
-        return res.status(400).json({ password: "password incorrect" });
+        errors.password = "password incorrect";
+        return res.status(400).json(errors);
       }
     });
   });
