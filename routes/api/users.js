@@ -5,12 +5,20 @@ const gravatar = require("gravatar");
 const bycrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/key.js");
-const passport = require("../../")
+const passport = require("passport");
+const validateRegisterInput = require('../../validation/register');
 
 router.post("/register", (req, res) => {
+  const {errors, isValid} = validateRegisterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      errors.email = "Email already exists";
+      return res.status(400).json(errors);
     } else {
       const avatar = gravatar.url(req.body.email, {
         s: "200",
@@ -60,25 +68,34 @@ router.post("/login", (req, res) => {
         // sign token
         console.log(keys.secretOrkey);
         jwt.sign(
-            payload, 
-            keys.secretOrkey, 
-            { expiresIn: 3600 }, 
-            (err, token) => {
-                if (token) {
-                    res.json({
-                        success : true,
-                        token : 'Bearer ' + token
-                    })    
-                }else{
-                    res.status(400).json({error : 'token undefined'});
-                }
-                
-            });
+          payload,
+          keys.secretOrkey,
+          { expiresIn: 3600 },
+          (err, token) => {
+            if (token) {
+              res.json({
+                success: true,
+                token: "Bearer " + token,
+              });
+            } else {
+              res.status(400).json({ error: "token undefined" });
+            }
+          }
+        );
       } else {
         return res.status(400).json({ password: "password incorrect" });
       }
     });
   });
 });
+
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { id, name, email } = req.user;
+    res.json({ id, name, email });
+  }
+);
 
 module.exports = router;
