@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "4448b8f9-3e6c-4cc9-98dc-cb48f299d65c",
+		"name": "[Malik] MERN-basic",
+		"description": "mern basic api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "user.get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/profile",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user.current",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/users/current",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user.register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"malik\",\n    \"email\" : \"saepulalmalik@gmail.com\",\n    \"password\" : \"12345\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/api/users/register",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user.login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var res = pm.response.json();",
+									"var newBearerToken = res.token.split(\" \")",
+									"",
+									"pm.environment.set(\"token\", newBearerToken[1]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"saepulalmalik@gmail.com\",\n    \"password\" : \"12345\"\n}"
+						},
+						"url": {
+							"raw": "{{domain}}/api/users/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "profile.get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}/api/profile",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": "token"
+		},
+		{
+			"value": "localhost:5000"
+		}
+	]
+}
