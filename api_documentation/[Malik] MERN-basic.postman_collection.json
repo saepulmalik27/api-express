@@ -7,80 +7,624 @@
 	},
 	"item": [
 		{
-			"name": "User",
+			"name": "Public",
 			"item": [
 				{
-					"name": "user.get",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{domain}}/api/profile",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"api",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user.current",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{domain}}/api/users/current",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"current"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user.register",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\" : \"malik\",\n    \"email\" : \"saepulalmalik@gmail.com\",\n    \"password\" : \"12345\"\n}"
+					"name": "Profile",
+					"item": [
+						{
+							"name": "profile.get all",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{domain}}/api/profile/all",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"all"
+									]
+								}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "{{domain}}/api/users/register",
-							"host": [
-								"{{domain}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"register"
-							]
+						{
+							"name": "profile.get by handle",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{domain}}/api/profile/handle/{{user}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"handle",
+										"{{user}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile.get by user_id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{domain}}/api/profile/user/{{user_id}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"user",
+										"{{user_id}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				}
+			]
+		},
+		{
+			"name": "Private",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "user.get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/api/users",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user.current",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var res = pm.response.json();",
+											"pm.environment.set(\"user\", res.name);",
+											"pm.environment.set(\"user_id\", res.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{domain}}/api/users/current",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"current"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "profile.get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{domain}}/api/profile",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile.createorupdate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "handle",
+											"value": "{{user}}",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "Developer",
+											"type": "text"
+										},
+										{
+											"key": "skills",
+											"value": "HTML,CSS,JS,PHP,MongoDB,SQL,Java,#C",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "Inspigo.id",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": "https://www.menuliskala.web.app",
+											"type": "text"
+										},
+										{
+											"key": "twitter",
+											"value": "https://twitter.com/saepulmalik27",
+											"type": "text"
+										},
+										{
+											"key": "linkedin",
+											"value": "https://www.linkedin.com/in/saepulmalik27/",
+											"type": "text"
+										},
+										{
+											"key": "githubusername",
+											"value": "saepulmalik27",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "learning by doing, menulis untuk berpikir, berpikir untuk menulis",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Bogor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/profile",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile.addExperience",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Junior Frontend Engineer",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "PT Inspigo Inovasi Indonesia",
+											"type": "text"
+										},
+										{
+											"key": "from",
+											"value": "2021",
+											"type": "text"
+										},
+										{
+											"key": "current",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "status probation",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "jl cilandak barat no 20, Jakarta Selatan",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/profile/experience",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"experience"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile.addEducation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "school",
+											"value": "IPB",
+											"type": "text"
+										},
+										{
+											"key": "from",
+											"value": "2017",
+											"type": "text"
+										},
+										{
+											"key": "current",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "status probation",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "jl cilandak barat no 20, Jakarta Selatan",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "degree",
+											"value": "Sarjana Sains",
+											"type": "text"
+										},
+										{
+											"key": "fieldofstudy",
+											"value": "fisika",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/profile/education",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"education"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile.deleteExperience",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{domain}}/api/profile/experience/606c0491491364275092f20e",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"experience",
+										"606c0491491364275092f20e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile.deleteEducation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "degree",
+											"value": "Sarjana Sains",
+											"type": "text"
+										},
+										{
+											"key": "school",
+											"value": "Institut Pertanian Bogor",
+											"type": "text"
+										},
+										{
+											"key": "from",
+											"value": "2013",
+											"type": "text"
+										},
+										{
+											"key": "to",
+											"value": "2017",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "ipk 3.25",
+											"type": "text"
+										},
+										{
+											"key": "fieldofstudy",
+											"value": "Fisika",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/profile/education/606c0508491364275092f20f",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"education",
+										"606c0508491364275092f20f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "profile.delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{domain}}/api/profile",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
 				{
 					"name": "user.login",
 					"event": [
@@ -132,41 +676,31 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Profile",
-			"item": [
+				},
 				{
-					"name": "profile.get",
+					"name": "user.register",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjE1OGQ4NGFjMmIwMWQ2ZjRlMWI5MSIsIm5hbWUiOiJtYWxpayIsImF2YXRhciI6Ii8vd3d3LmdyYXZhdGFyLmNvbS9hdmF0YXIvZDM1MGJiYzA1OTJjZDNlOWRlMWJlMWFkZWU0OTYyYzA_cz0yMDAmcj1wZyZkPW1tIiwiaWF0IjoxNjE3MjQzOTA4LCJleHAiOjE2MTcyNDc1MDh9.U-hID8Jz_8NHyAQC96DoFONMZYzGpDpqDh9pS6pa4u8",
+								"key": "Content-Type",
+								"value": "application/json",
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"joh due\",\n    \"email\" : \"johdue@gmail.com\",\n    \"password\" : \"123456\",\n    \"password2\" : \"123456\"\n}"
+						},
 						"url": {
-							"raw": "{{domain}}/api/profile",
+							"raw": "{{domain}}/api/users/register",
 							"host": [
 								"{{domain}}"
 							],
 							"path": [
 								"api",
-								"profile"
+								"users",
+								"register"
 							]
 						}
 					},
