@@ -102,6 +102,81 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Post",
+					"item": [
+						{
+							"name": "get all posts",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get one post",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts/606c11b8f0e69f2dcdfd80d1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"606c11b8f0e69f2dcdfd80d1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -619,6 +694,253 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Post",
+					"item": [
+						{
+							"name": "delete post by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts/606c11b8f0e69f2dcdfd80d1",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"606c11b8f0e69f2dcdfd80d1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "test posting create",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts/like/606c21af972fd234c83e7d8a",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"like",
+										"606c21af972fd234c83e7d8a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unlike post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts/unlike/606c21af972fd234c83e7d8a",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"unlike",
+										"606c21af972fd234c83e7d8a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "comment post",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "nice post sangat informatif",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts/comment/606c21af972fd234c83e7d8a",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"comment",
+										"606c21af972fd234c83e7d8a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "remove comment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "test",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{domain}}/api/posts/comment/606c21af972fd234c83e7d8a/06c272483b9a93757915c80",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"comment",
+										"606c21af972fd234c83e7d8a",
+										"06c272483b9a93757915c80"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -661,7 +983,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"saepulalmalik@gmail.com\",\n    \"password\" : \"12345\"\n}"
+							"raw": "{\n    \"email\" : \"johdue@gmail.com\",\n    \"password\" : \"123456\"\n}"
 						},
 						"url": {
 							"raw": "{{domain}}/api/users/login",
