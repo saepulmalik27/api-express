@@ -10,6 +10,11 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 
+/**
+ * @route GET api/users/register
+ * @desc get register user
+ * @access private
+ */
 router.post("/register", (req, res) => {
   const {errors, isValid} = validateRegisterInput(req.body);
 
@@ -51,6 +56,13 @@ router.post("/register", (req, res) => {
     }
   });
 });
+
+
+/**
+ * @route GET api/users/login
+ * @desc get login user
+ * @access private
+ */
 
 router.post("/login", (req, res) => {
   // res.json(req.body);
@@ -101,6 +113,29 @@ router.post("/login", (req, res) => {
   });
 });
 
+/**
+ * @route GET api/users
+ * @desc get users
+ * @access private
+ */
+router.get('/',passport.authenticate('jwt', {session : false}), (req, res) => {
+  const errors = {};
+  User.find().then(
+    users => {
+      if (!users) {
+        errors.nousers = "there no users yet";
+        return res.status(404).json(errors)
+      }
+      res.json(users)
+    }
+  ).catch(err => res.status(404).json(err))
+})
+
+/**
+ * @route GET api/users/current
+ * @desc get current user
+ * @access private
+ */
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
